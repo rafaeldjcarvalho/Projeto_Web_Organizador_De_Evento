@@ -1,0 +1,84 @@
+@charset "UTF-8";
+body {
+	padding-top: 60px; /* Adiciona espaço para a navbar fixa */
+	font-family: Arial, sans-serif;
+    background-color: white;
+    color: #333;
+    padding: 20px;
+}
+
+/* Main content */
+
+h1 {
+    text-align: center;
+    color: #08090D;
+    margin: 20px 0px;
+    padding-top: 10px;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #ddd;
+    margin: 20px 0;
+   
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+h3 {
+    margin-top: 20px;
+    color: #343A40;
+}
+
+/* Buttons */
+a.button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px 0;
+    background-color: #6E7371;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+a.button:hover {
+    background-color: #A1A69C;
+    color: #1A1E26;
+}
+
+.error {
+    color: red;
+    font-size: 0.9em;
+}
+
+.sucess {
+    color: green;
+    font-size: 0.9em;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+	body{
+		padding-top: 260px; 
+	}
+
+    h1 {
+        font-size: 22px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    a.button {
+        width: 100%;
+        text-align: center;
+    }
+}

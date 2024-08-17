@@ -1,0 +1,19 @@
+Como criar o banco de dados:
+1º Abra o arquivo com o final "usuarios" no Gerenciador do Banco de dados;
+2º Execute esse script;
+3º Abra o arquivo com o final "eventos" no Gerenciador do Banco de dados e Execute o script;
+4º Abra o arquivo com o final "participantes" no Gerenciador do Banco de dados e Execute o script;
+5º Ao fazer um select, na tabela usuarios, verá 2 usuários administradores registrados. Pode fazer login com esses dados
+ou cadastrar um novo usuário no sistema;
+
+Como abrir o sistema:
+- É necessário ter o Tomcat nesta versão: apache-tomcat-10.1.25;
+- Ter o zip do projeto;
+- É necessário importar o projeto:
+	- No eclipse: tem uma opção de import, ao selecionar basta escolher a opção existingProject(Ou algo assim), para
+importar o projeto, não esquecer de clicar no botão de copy antes de finalizar.
+- Com o projeto na IDE e o tomcat podendo ser executado normalmente, abra o projeto, navegue pela pasta src -> main -> webapp
+nesta pasta está todas as páginas web e todos os arquivos js e css.
+- Procure o arquivo "index.html" e abra o arquivo.
+- Com o arquivo aberto basta executar o projeto e escolher o tomcat como servidor.
+- Pronto! pode mexer no sistema como quiser e testar vários usuários e eventos.
