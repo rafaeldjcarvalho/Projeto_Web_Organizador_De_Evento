@@ -78,6 +78,10 @@ public class EventoDAO {
 	}
 
 	public void delete(int id) {
+		int quantidadeInscritos = qtdVaga(id);
+		if(quantidadeInscritos > 0) {
+			deleteAllParticipantesInEvent(id);
+		} // se for igual a zero não há inscritos no evento
 		try {
 			String sql = "DELETE FROM eventos WHERE id = ?";
 
@@ -88,6 +92,22 @@ public class EventoDAO {
 
             preparedStatement.close();
 
+		} catch(SQLException ex) {
+			throw new RuntimeException(ex);
+		}
+	}
+	
+	private void deleteAllParticipantesInEvent(int id) {
+		try {
+			String sqlParticipantes = "delete from participantes where evento_id = ?";
+			
+			PreparedStatement preparedStatement = connection.prepareStatement(sqlParticipantes);
+            preparedStatement.setInt(1, id);
+            
+            preparedStatement.executeUpdate();
+
+            preparedStatement.close();
+            
 		} catch(SQLException ex) {
 			throw new RuntimeException(ex);
 		}

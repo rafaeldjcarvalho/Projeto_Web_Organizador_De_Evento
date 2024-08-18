@@ -37,18 +37,8 @@ CREATE TABLE `usuarios` (
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `cpf` (`cpf`),
   UNIQUE KEY `matricula` (`matricula`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `usuarios`
---
-
-LOCK TABLES `usuarios` WRITE;
-/*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'Rafael de Jesus Carvalho','rafael.jesus@gmail.com','senha123','ADMIN',NULL,'135.792.468-00',NULL), (2, 'Geovane', 'geovane@gmail.com', 'admin123', 'ADMIN', NULL, '123.123.123-12', NULL);
-/*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -59,4 +49,5 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-08-16 18:14:15
+insert Into usuarios (nome, email, senha, tipo_usu, matricula, cpf, curso) values ('Rafael de Jesus', 'rafael.jesus@gmail.com', 'admin123', 'ADMIN', '2021002398', '123.123.123-12', null);
+-- Dump completed on 2024-08-18 16:59:29
