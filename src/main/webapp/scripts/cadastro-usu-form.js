@@ -61,11 +61,18 @@ document.getElementById('cadastro-form').addEventListener('submit', function(eve
         var matricula = document.getElementById('matricula').value;
         var cpf = document.getElementById('cpf').value;
         var curso = document.getElementById('curso').value;
-
+	
+		// Regex para aceitar apenas números
+		let onlyNumbers = /^[0-9]+$/;
         if (!matricula) {
             document.getElementById('errorMatricula').textContent = 'Por favor, preencha a matrícula.';
             valid = false;
-        }
+        } else if (!onlyNumbers.test(matricula)) {
+	        document.getElementById('errorMatricula').textContent = 'A matrícula deve conter apenas números.';
+	        valid = false;
+	    } else {
+	        document.getElementById('errorMatricula').textContent = ''; // Limpa o erro
+	    }
 
         if (!cpf) {
             document.getElementById('errorCpf').textContent = 'Por favor, preencha o CPF.';
