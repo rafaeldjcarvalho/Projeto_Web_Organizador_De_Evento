@@ -13,6 +13,7 @@ import com.eventos.model.Usuario;
 
 class UsuarioDAOTest {
 	
+	// Caminho Feliz
 	@Test
 	public void testDelete() {
 	    // Criar e salvar um novo usuário
@@ -104,4 +105,36 @@ class UsuarioDAOTest {
 	    
 	    usuarioDAO.delete(usuarioEncontrado.get().getId());
 	}
+	
+	// Caminho Ruim
+	@Test
+	public void testSaveUserWithNullFields() {
+	    Usuario usuario = new Usuario(null, null, null, null, null, null, null);
+	    UsuarioDAO usuarioDAO = new UsuarioDAO(ConnectionFactory.getConnection());
+	    assertThrows(RuntimeException.class, () -> {
+	        usuarioDAO.save(usuario);
+	    });
+	}
+
+	@Test
+	public void testSaveDuplicateUser() {
+	    Usuario usuario = new Usuario("Maria Clara", "123456", "12345678910", "Arquitetura", 
+	                                  "maria@email.com", "senha123", TipoUsuario.ALUNO);
+	    UsuarioDAO usuarioDAO = new UsuarioDAO(ConnectionFactory.getConnection());
+	    usuarioDAO.save(usuario);
+	    
+	    assertThrows(RuntimeException.class, () -> {
+	        usuarioDAO.save(usuario);
+	    });
+	    // Limpar dados de teste
+	    usuarioDAO.delete(usuario.getId());
+	}
+	
+	@Test
+	public void testNotFindByUserId() {
+		UsuarioDAO usuarioDAO = new UsuarioDAO(ConnectionFactory.getConnection());
+	    Optional<Usuario> user = usuarioDAO.findById(-1); // ID inexistente
+	    assertFalse(user.isPresent());
+	}
+
 }

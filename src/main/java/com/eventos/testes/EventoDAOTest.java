@@ -13,6 +13,7 @@ import com.eventos.model.Evento;
 
 class EventoDAOTest {
 	
+	// Caminho Feliz
 	@Test
 	public void testDeleteEvento() {
 	    EventoDAO eventoDAO = new EventoDAO(ConnectionFactory.getConnection());
@@ -76,4 +77,29 @@ class EventoDAOTest {
 	    
 	    eventoDAO.delete(evento.getId());
 	}
+	
+	// Caminho Ruim
+	@Test
+	public void testSaveEventoWithInvalidTitulo() {
+	    LocalDateTime inicioInscricao = LocalDateTime.now();
+	    LocalDateTime fimInscricao = LocalDateTime.now().plusDays(5);
+	    LocalDateTime inicioEvento = LocalDateTime.now().plusDays(10);
+	    LocalDateTime fimEvento = LocalDateTime.now().plusDays(11);
+
+	    // Evento com título vazio
+	    Evento evento = new Evento(null, "Descrição Teste", inicioInscricao, fimInscricao, inicioEvento, fimEvento, "Local Teste", 1, 50);
+	    EventoDAO eventoDAO = new EventoDAO(ConnectionFactory.getConnection());
+
+	    assertThrows(RuntimeException.class, () -> {
+	        eventoDAO.save(evento);
+	    });
+	}
+	
+	@Test
+	public void testFindEventoByIdNotFound() {
+	    EventoDAO eventoDAO = new EventoDAO(ConnectionFactory.getConnection());
+	    Optional<Evento> evento = eventoDAO.findById(-1); // ID inexistente
+	    assertFalse(evento.isPresent());
+	}
+
 }
